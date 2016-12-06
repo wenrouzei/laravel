@@ -26,7 +26,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-    	return view('admin.home',['username'=>Auth::guard('admin')->user()->name]);
+    	return view('admin.dashboard.index',['username'=>Auth::guard('admin')->user()->name]);
         // dd('后台首页，当前用户名：'.Auth::guard('admin')->user()->name);
         // dd('后台首页，当前用户名：'.auth('admin')->user()->name);
     }
