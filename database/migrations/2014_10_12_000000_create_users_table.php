@@ -20,6 +20,17 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+
+            //github 第三方登录测试
+            // $table->increments('id');            
+            // $table->string('github_id')->unique();
+            // $table->string('name');
+            // $table->string('email')->unique();
+            // $table->string('password')->nullable();
+            // $table->string('avatar');            
+            // $table->rememberToken();
+            // $table->timestamps();
         });
     }
 

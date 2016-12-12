@@ -16,6 +16,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
+        // 'name', 'email', 'github_id', 'avatar', 'password',//github 第三方登录测试
     ];
 
     /**
