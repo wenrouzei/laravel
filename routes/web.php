@@ -32,3 +32,33 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function ($router)
 Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
 
+
+Route::get('/broadcast', function () {
+    event(new App\Events\PusherEvent('Great Wall is great ', '1'));
+    return 'This is a Laravel Broadcaster Test!';
+});
+
+
+//测试pusher通过可以使用
+Route::get('/bridge/{msg?}', function($msg) {
+    $pusher = \Illuminate\Support\Facades\App::make('pusher');
+
+    $pusher->trigger( 'test-channel',
+                      'test-event', 
+                      ['text' => $msg??'I Love China!!!']
+                    );
+    return 'This is a Laravel Pusher Bridge Test!';
+});
+
+//测试pusher通过可以使用
+Route::get('notifications', 'NotificationController@getIndex');
+Route::post('notifications/postNotify', 'NotificationController@postNotify');
+
+//测试pusher通过可以使用
+Route::get('activities', 'ActivityController@getIndex');
+Route::post('activities/postStatusUpdate', 'ActivityController@postStatusUpdate');
+Route::post('activities/postLike/{id}', 'ActivityController@postLike');
+
+//聊天室测试pusher通过可以使用
+Route::get('chat', 'ChatController@getIndex');
+Route::post('chat/postMessage', 'ChatController@postMessage');

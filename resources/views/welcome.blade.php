@@ -63,6 +63,20 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script type="text/javascript" src='http://106.75.132.79/Public/Js/jquery-1.3.2.min.js'></script>
+        <script src="//js.pusher.com/3.0/pusher.min.js"></script>
+        <script>
+         Pusher.log = function(msg) {
+                console.log(msg);
+            };
+        var pusher = new Pusher("{{env("PUSHER_KEY")}}")
+        var channel = pusher.subscribe('test-channel');
+        channel.bind('test-event', function(data) {
+          console.log(data);
+          console.log(data.text);
+          $(".title").html(data.text);
+        });
+        </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">

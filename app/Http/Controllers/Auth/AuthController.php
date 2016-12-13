@@ -24,11 +24,16 @@ class AuthController extends Controller
             return Redirect::to('auth/github');
         }
 
-        $authUser = $this->findOrCreateUser($user);
+        \Session::put('user', $user);
+        // var_dump(\Session::get('user'));
+        
+        // $authUser = $this->findOrCreateUser($user);
 
-        Auth::login($authUser, true);
+        // Auth::login($authUser, true);
+        // Auth::login($user, true);
     
-        return redirect('/home');
+        // return redirect('/home');
+        return redirect('/activities');
     }
     
     private function findOrCreateUser($githubUser)
