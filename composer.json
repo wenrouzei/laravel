@@ -11,7 +11,8 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "laravel/socialite": "^2.0",
         "pusher/pusher-php-server": "^2.6",
-        "vinkla/pusher": "^2.4"
+        "vinkla/pusher": "^2.4",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

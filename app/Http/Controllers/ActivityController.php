@@ -26,7 +26,8 @@ class ActivityController extends Controller
 
         	// dd(\Session::get('user'),$this->user);
             // If there is no user, redirect to GitHub login
-            if(!$this->user->id)
+            
+            if(!isset($this->user->id))
             {
                 return redirect('auth/github?redirect=/activities');
             }
@@ -89,7 +90,7 @@ class ActivityController extends Controller
                 'id' => $id,
                 'likedActivityId' => $id,
             ];
-            
+
             // TODO: trigger event
             $this->pusher->trigger('activities', 'status-update-liked', $activity);
         }

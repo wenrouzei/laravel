@@ -39,7 +39,7 @@ Route::get('/broadcast', function () {
 });
 
 
-//测试pusher通过可以使用
+//实时数据测试pusher通过可以使用
 Route::get('/bridge/{msg?}', function($msg) {
     $pusher = \Illuminate\Support\Facades\App::make('pusher');
 
@@ -50,15 +50,29 @@ Route::get('/bridge/{msg?}', function($msg) {
     return 'This is a Laravel Pusher Bridge Test!';
 });
 
-//测试pusher通过可以使用
+//实时数据测试pusher通过可以使用
 Route::get('notifications', 'NotificationController@getIndex');
 Route::post('notifications/postNotify', 'NotificationController@postNotify');
 
-//测试pusher通过可以使用
+//实时数据测试pusher通过可以使用
 Route::get('activities', 'ActivityController@getIndex');
 Route::post('activities/postStatusUpdate', 'ActivityController@postStatusUpdate');
 Route::post('activities/postLike/{id}', 'ActivityController@postLike');
 
-//聊天室测试pusher通过可以使用
+//实时聊天室测试pusher通过可以使用
 Route::get('chat', 'ChatController@getIndex');
 Route::post('chat/postMessage', 'ChatController@postMessage');
+
+
+Route::get('redis/{msg}', function($msg){
+    Illuminate\Support\Facades\Redis::set('abc',$msg);
+    return Illuminate\Support\Facades\Redis::get('abc');
+});
+
+//实时数据测试通过可以用 依赖 nodejs express socket.io redis
+Route::get('writemessage', 'SocketController@writemessage');
+Route::any('sendmessage', 'SocketController@sendMessage');
+
+//实时数据测试通过可以用 依赖 nodejs socket.io ioredis
+Route::get('test', 'TestController@index');
+Route::get('test/fire', 'TestController@fire');
