@@ -9,39 +9,28 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class SomeEvent implements ShouldBroadcast
+class ShippingStatusUpdated implements ShouldBroadcast
 {
     use InteractsWithSockets, SerializesModels;
 
+    public $id;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public $user_id;
-    public $message;
-    protected $channel;
-
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct($user_id, $message , $channel)
+    public function __construct($id)
     {
-        //
-        $this->user_id = $user_id;
-        $this->message = $message;
-        $this->channel = $channel;
+        $this->id = $id;
     }
 
     /**
-     * Get the channels the event should be broadcast on.
+     * Get the channels the event should broadcast on.
      *
-     * @return array
+     * @return Channel|array
      */
     public function broadcastOn()
     {
-        return [$this->channel];
+        return ['orders'];
     }
 }

@@ -21,7 +21,7 @@ class TestController extends Controller
     }
 
     public function fire(){
-        Event::fire(new \App\Events\SomeEvent(3,' say something '));
+        Event::fire(new \App\Events\SomeEvent(3,' say something ', 'test-channel'));
         return 'fire';
     }
 

@@ -33,13 +33,14 @@ Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
 
 
+//实时广播数据测试pusher通过可以使用 依赖 composer require pusher/pusher-php-server ？
 Route::get('/broadcast', function () {
-    event(new App\Events\PusherEvent('Great Wall is great ', '1'));
+    event(new App\Events\ShippingStatusUpdated(1));
     return 'This is a Laravel Broadcaster Test!';
 });
 
 
-//实时数据测试pusher通过可以使用
+//实时数据测试pusher通过可以使用 依赖vinkla/pusher扩展
 Route::get('/bridge/{msg?}', function($msg) {
     $pusher = \Illuminate\Support\Facades\App::make('pusher');
 
@@ -50,16 +51,16 @@ Route::get('/bridge/{msg?}', function($msg) {
     return 'This is a Laravel Pusher Bridge Test!';
 });
 
-//实时数据测试pusher通过可以使用
+//实时数据测试pusher通过可以使用 依赖vinkla/pusher扩展
 Route::get('notifications', 'NotificationController@getIndex');
 Route::post('notifications/postNotify', 'NotificationController@postNotify');
 
-//实时数据测试pusher通过可以使用
+//实时数据测试pusher通过可以使用 依赖vinkla/pusher扩展
 Route::get('activities', 'ActivityController@getIndex');
 Route::post('activities/postStatusUpdate', 'ActivityController@postStatusUpdate');
 Route::post('activities/postLike/{id}', 'ActivityController@postLike');
 
-//实时聊天室测试pusher通过可以使用
+//实时聊天室测试pusher通过可以使用  依赖vinkla/pusher扩展
 Route::get('chat', 'ChatController@getIndex');
 Route::post('chat/postMessage', 'ChatController@postMessage');
 
@@ -73,6 +74,6 @@ Route::get('redis/{msg}', function($msg){
 Route::get('writemessage', 'SocketController@writemessage');
 Route::any('sendmessage', 'SocketController@sendMessage');
 
-//实时数据测试通过可以用 依赖 nodejs socket.io ioredis
+//实时数据测试通过可以用 依赖 nodejs socket.io ioredis  / pusher/pusher-php-server laravel-echo
 Route::get('test', 'TestController@index');
 Route::get('test/fire', 'TestController@fire');
