@@ -77,3 +77,10 @@ Route::any('sendmessage', 'SocketController@sendMessage');
 //实时数据测试通过可以用 依赖 nodejs socket.io ioredis  / pusher/pusher-php-server laravel-echo
 Route::get('test', 'TestController@index');
 Route::get('test/fire', 'TestController@fire');
+
+
+Route::get('has-or-belong', function() {
+    // return App\User::find(1)->chatMessage;// hasOne 一对一          user表在chat_messagesibao有关联字段
+    // return App\User::find(1)->chatMessages;//hasMany 一对多         user表在chat_messagesibao有关联字段
+    return App\ChatMessage::find(1)->user;//belongTo 多属于一            chat_messagesibao表在user表没关联字段、但user表在chat_messages表有关联字段，从属关系
+});

@@ -16,7 +16,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-        // 'name', 'email', 'github_id', 'avatar', 'password',//github ç¬¬ä¸‰æ–¹ç™»å½•æµ‹è¯•
+        // 'name', 'email', 'github_id', 'avatar', 'password',//github µÚÈı·½µÇÂ¼²âÊÔ
     ];
 
     /**
@@ -27,4 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function chatMessages(){
+        return $this->hasMany('App\ChatMessage');//ÔÚchat_messages±íÓĞ¹ØÁª×Ö¶Îuser_id, ËùÒÔÓÃhasXXX
+    }
+
+    public function chatMessage(){
+        return $this->hasOne('App\ChatMessage');//ÔÚchat_messages±íÓĞ¹ØÁª×Ö¶Îuser_id, ËùÒÔÓÃhasXXX
+    }
 }
