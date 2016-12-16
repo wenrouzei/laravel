@@ -22,6 +22,13 @@ class TestController extends Controller
 
     public function fire(){
         Event::fire(new \App\Events\SomeEvent(3,' say something ', 'test-channel'));
+
+        // $user = \App\User::first();
+        // $message = \App\ChatMessage::create([
+        //     'user_id' => $user->id,
+        //     'message' => 'fsadfsafsad'
+        // ]);
+        // Event::fire(new \App\Events\ChatMessageWasReceived($message, $user));
         return 'fire';
     }
 

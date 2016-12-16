@@ -54,3 +54,8 @@ window.Echo.channel('test-channel')
     .listen('SomeEvent', (e) => {
         console.log(e);
     });
+
+window.Echo.channel('chat-room.1')
+    .listen('ChatMessageWasReceived', (e) => {
+        console.log(e);
+    });

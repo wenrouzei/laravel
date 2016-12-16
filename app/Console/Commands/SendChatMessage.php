@@ -16,7 +16,7 @@ class SendChatMessage extends Command
         $user = \App\User::first();
         $message = \App\ChatMessage::create([
             'user_id' => $user->id,
-            'message' => $this->argument('message')
+            'message' => iconv('gbk//TRANSLIT//IGNORE', 'utf-8', $this->argument('message'))
         ]);
 
         event(new \App\Events\ChatMessageWasReceived($message, $user));
