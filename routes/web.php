@@ -84,3 +84,5 @@ Route::get('has-or-belong', function() {
     // return App\User::find(1)->chatMessages;//hasMany 一对多         user表在chat_messagesibao有关联字段
     return App\ChatMessage::find(1)->user;//belongTo 多属于一            chat_messagesibao表在user表没关联字段、但user表在chat_messages表有关联字段，从属关系
 });
+
+Route::get('testckeditor', 'CkeditorController@index');

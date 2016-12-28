@@ -12,7 +12,8 @@
         "laravel/socialite": "^2.0",
         "pusher/pusher-php-server": "^2.6",
         "vinkla/pusher": "^2.4",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "barryvdh/laravel-elfinder": "^0.3.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

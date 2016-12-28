@@ -170,6 +170,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Vinkla\Pusher\PusherServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
         //
 
         /*
