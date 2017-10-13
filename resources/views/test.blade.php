@@ -16,7 +16,8 @@
 	    console.log(data);
 	});
 	socket.on('test-channel:App\\Events\\SomeEvent', function(message){
-	    console.log(message);
+	    console.log(message, typeof message, message.user_id);
+	    $('#content').append('<br>'+message.user_id+':'+message.message);
 	});
 	console.log(socket);
 </script>
